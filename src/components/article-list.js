@@ -3,13 +3,14 @@ import ArticleItem from './article-item';
 
 const dummyList = [{id:"1"},{id:"2"},{id:"3"},{id:"4"}];
 
-function ArticleList(props){
+function ArticleList({articles}){
   return (
     <section>
-      <h1>List of articles</h1>
+      <h1>Articles</h1>
       {
-        dummyList.map(item => (
-          <ArticleItem key={item.id} />
+        articles &&
+        articles.map(article => (
+          <ArticleItem key={article.slug} {...article} />
         ))
       }
     </section>

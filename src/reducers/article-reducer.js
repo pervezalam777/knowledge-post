@@ -1,0 +1,48 @@
+
+const initialSate = {
+  article:null,
+  comments:null
+}
+
+const articleReducer = (state = initialSate, action) => {
+  switch(action.type){
+    default:
+      return state;
+  }
+}
+
+export default articleReducer;
+
+/*
+{
+    article: {
+      "slug": "how-to-train-your-dragon",
+      "title": "How to train your dragon",
+      "description": "Ever wonder how?",
+      "body": "It takes a Jacobian",
+      "tagList": ["dragons", "training"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "jake",
+        "bio": "I work at statefarm",
+        "image": "https://i.stack.imgur.com/xHWG8.jpg",
+        "following": false
+      }
+    },
+    comments: [{
+      "id": 1,
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:22:56.637Z",
+      "body": "It takes a Jacobian",
+      "author": {
+        "username": "jake",
+        "bio": "I work at statefarm",
+        "image": "https://i.stack.imgur.com/xHWG8.jpg",
+        "following": false
+      }
+    }]
+  }
+*/

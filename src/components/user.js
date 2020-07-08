@@ -1,5 +1,7 @@
 import React from 'react';
 
+//TODO: even on loading of image it should show
+// placeholder image.
 function User(props){
   return (
     <div>
@@ -8,7 +10,7 @@ function User(props){
         alt={props.username}
         style={{borderRadius:'100%', width:'2.5rem'}} 
       />
-      <h4>{`props.username`}</h4>
+      <h4>{props.username}</h4>
       {props.children}
     </div>
   )

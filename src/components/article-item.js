@@ -1,18 +1,25 @@
 import React from 'react';
 import { Card } from '../ui/card';
 import {Link} from "react-router-dom"
+import User from './user';
 
-function ArticleItem() {
+function ArticleItem({
+  author,
+  description,
+  createdAt,
+  slug,
+  title
+}) {
   return <Card>
     <section >
-      <img src="" alt="" />
-      <span>{'Author Name'}</span>
-      <span>{'July 4, 2020'}</span>
+      <User image={author.image} username={author.username}>
+        <span>{createdAt}</span>
+      </User>
     </section>
     <section>
-      <h2>{'Blog title'}</h2>
-      <p>{'Description'}</p>
-      <Link to={`/articles/${'id'}`}>Read more..</Link>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <Link to={`/articles/${slug}`}>Read more..</Link>
     </section>
   </Card>
 }
