@@ -42,3 +42,10 @@ The following are the approaches of this project.
 * [React-route](https://reactrouter.com/web/guides/quick-start)
 * [React Bootstrap](https://react-bootstrap.github.io/)
 * [Realworld API](https://github.com/gothinkster/realworld/tree/master/api)
+
+
+## TODO
+* add linting rules
+* add unit testing
+* add code coverage
+* CI/CD for deployment

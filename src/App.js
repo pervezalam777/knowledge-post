@@ -6,14 +6,13 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AppRouter from './routes/app-router';
+import HeaderNavigation from './components/header-navigation';
 
 function App() {
   return (
     <Router>
       <header>
-        <nav>
-          <h3>nav bar</h3>
-        </nav>
+       <HeaderNavigation isAuthenticated={true}/>
       </header>
       <main>
         <AppRouter />
