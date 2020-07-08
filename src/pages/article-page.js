@@ -7,7 +7,7 @@ function ArticlePage(props){
       <Article 
         title={`Somebody`}
         id={`id`}
-        body={`This is the body`}
+        body={`# story\n\nThis is a paragraph`}
       />
       <footer>
         <span>Comments component</span>
