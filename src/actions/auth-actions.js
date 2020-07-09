@@ -15,7 +15,7 @@ export const doAuthenticate = (credentials, authType = SING_IN) => {
   return async (dispatch) => {
     dispatch(authenticating())
     try {
-      let response = authType == SIGN_UP 
+      let response = authType === SIGN_UP 
         ? await signUp(credentials)
         : await signIn(credentials);
      

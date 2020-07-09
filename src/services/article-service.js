@@ -2,17 +2,17 @@ import { convertErrorObjectToString } from "../utility/util";
 
 const serviceUrl = process.env.REACT_APP_SERVICE_URL;
 
-export const publishToServer = async (data, token) => {
+const publish = async (detail) => {
   try {
     let response = await fetch(
-      `${serviceUrl}/articles`,
+      detail.url,
       {
-        method:"POST",
+        method:detail.method,
         headers: {
-          "Authorization":`Token ${token}`,
+          "Authorization":`Token ${detail.token}`,
           "Content-Type": "application/json; charset=utf-8"
         },
-        body: JSON.stringify({article:data})
+        body: JSON.stringify({article:detail.data})
       }
     );
     if(response.ok) {
@@ -30,6 +30,26 @@ export const publishToServer = async (data, token) => {
   } catch (error) {
     return Promise.reject({errorMessage:error.message})
   }
+}
+
+export const publishToServer = async (data, token) => {
+  let details = {
+    url: `${serviceUrl}/articles`,
+    method:"POST",
+    data,
+    token
+  }
+  return publish(details);
+}
+
+export const updateToServer = (data, token, slug) => {
+  let details = {
+    url: `${serviceUrl}/articles/${slug}`,
+    method:"PUT",
+    data,
+    token
+  }
+  return publish(details)
 }
 
 export const fetchArticleBySlug = async (slug) => {

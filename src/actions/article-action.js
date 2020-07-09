@@ -1,4 +1,4 @@
-import { publishToServer, fetchArticleBySlug } from "../services/article-service"
+import { publishToServer, fetchArticleBySlug, updateToServer } from "../services/article-service"
 
 
 export const PUBLISHING_ARTICLE = 'PUBLISHING_ARTICLE';
@@ -7,6 +7,7 @@ export const PUBLISHED = 'PUBLISHED';
 export const LOADING_ARTICLE = 'LOADING_ARTICLE';
 export const ARTICLE_RECEIVED = 'ARTICLE_RECEIVED';
 export const ARTICLE_NOT_FOUND = 'ARTICLE_NOT_FOUND';
+export const RESET_SUCCESS = 'RESET_SUCCESS';
 
 const publishingArticle = () => ({type:PUBLISHING_ARTICLE});
 const publishError = err => ({type:PUBLISH_ERROR, payload:err});
@@ -15,12 +16,16 @@ const loadingArticle = () => ({type:LOADING_ARTICLE})
 const articleLoaded = (data) => ({type:ARTICLE_RECEIVED, payload:data})
 const articleNotFound = (err) => ({type:ARTICLE_NOT_FOUND, payload:err})
 
-export const publishArticle = (data) => {
+export const resetSuccess = () => ({type:RESET_SUCCESS})
+
+export const publishArticle = (data, slug) => {
   return async (dispatch, getState) => {
     dispatch(publishingArticle())
     try{
       let token = getState().user.token;
-      let response = await publishToServer(data, token);
+      let response = slug 
+        ? await updateToServer(data, token, slug)
+        : await publishToServer(data, token);
       dispatch(publishSuccess(response));
     } catch(error){
       dispatch(publishError(error))

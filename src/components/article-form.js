@@ -15,8 +15,8 @@ function ArticleForm({
   description,
   body,
   tagList,
-  publishError,
-  publishing,
+  error,
+  loading,
   dirty,
   handleChange,
   handleSubmit
@@ -25,11 +25,11 @@ function ArticleForm({
   return (
     <form onSubmit={handleSubmit}>
        { 
-        dirty && publishError 
-        && getErrorElement(publishError)
+        dirty && error 
+        && getErrorElement(error)
       }
       {
-        dirty && publishing && <p>publishing.....</p> 
+        dirty && loading && <p>publishing.....</p> 
       }
       <label htmlFor="title" style={{display:'none'}} >Article Title</label>
       <input 
@@ -70,7 +70,7 @@ function ArticleForm({
         placeholder={`What's this article about?`} 
       />
       <br />
-      <button type="submit" disabled={publishing || !dirty}>Publish Article</button>
+      <button type="submit" disabled={loading || !dirty}>Publish Article</button>
     </form>
   )
 }

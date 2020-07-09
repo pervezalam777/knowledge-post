@@ -1,9 +1,9 @@
-import { PUBLISH_ERROR, PUBLISHED, PUBLISHING_ARTICLE, ARTICLE_NOT_FOUND, ARTICLE_RECEIVED } from "../actions/article-action";
+import { PUBLISH_ERROR, PUBLISHED, PUBLISHING_ARTICLE, ARTICLE_NOT_FOUND, ARTICLE_RECEIVED, RESET_SUCCESS } from "../actions/article-action";
 
 const initialSate = {
-  published:false,
-  publishing:false,
-  publishError:null,
+  success:false,
+  loading:false,
+  error:null,
   fetchError:null
 }
 
@@ -12,36 +12,31 @@ const articleReducer = (state = initialSate, action) => {
     case PUBLISHING_ARTICLE:
       return {
         ...state,
-        publishError:null,
-        publishing:true,
-        published:false
+        error:null,
+        loading:true,
+        success:false
       }
     case PUBLISH_ERROR:
-      return {
-        ...state,
-        publishError: action.payload.errorMessage,
-        publishing:false,
-        published:false
-      }
     case ARTICLE_NOT_FOUND:
       return {
         ...state,
-        fetchError:action.payload.errorMessage,
+        error: action.payload.errorMessage,
+        loading:false,
+        success:false
       }
+    case ARTICLE_RECEIVED:
     case PUBLISHED:
       return {
         ...state,
         ...action.payload.article,
-        publishError:null,
-        publishing:false,
-        published:true
+        error:null,
+        loading:false,
+        success:true
       }
-    
-    case ARTICLE_RECEIVED:
+    case RESET_SUCCESS: 
       return {
         ...state,
-        ...action.payload.article,
-        fetchError:null,
+        success:false
       }
     default:
       return state;
