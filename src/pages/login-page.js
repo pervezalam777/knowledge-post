@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import AuthForm from '../components/auth-form';
+import { doAuthenticate } from '../actions/auth-actions';
+
+//TODO: Client side validation as well
+//NOTE: There is lot of duplication in Sign In and Sign Up
 
 const formStaticData = {
   heading:"Sign in",
@@ -24,12 +31,20 @@ const formItems = {
   }
 }
 
-function LoginPage(){
+function LoginPage({dispatch, errorMessage, isAuthenticated}){
   const [state, setState] = useState(formItems);
+
+  if(isAuthenticated){
+    return (<Redirect to="/" />)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("form submitted...")
+    let {
+      password:{value:password},
+      email:{value:email}
+    } = state;
+    dispatch(doAuthenticate({password, email}));
   }
 
   const handleChange = (e) => {
@@ -44,4 +59,18 @@ function LoginPage(){
   return <AuthForm {...data} />
 }
 
-export default LoginPage;
+const mapStateToProps = (state) => {
+  let {
+    user:{
+      serverError,
+      isAuthenticated,
+      token
+    }
+  } = state;
+  return {
+    isAuthenticated: (token && isAuthenticated),
+    errorMessage: serverError ? serverError.errorMessage : null
+  }
+}
+
+export default connect(mapStateToProps)(LoginPage);

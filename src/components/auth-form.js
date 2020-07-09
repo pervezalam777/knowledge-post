@@ -1,17 +1,26 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
+//TODO: Error Message display format 
+
 function AuthForm({
   heading,
   linkTo,
   linkToLabel,
   formItems,
   handleChange,
-  handleSubmit
+  handleSubmit,
+  errorMessage
 }){
   return <form onSubmit={handleSubmit}>
     <h1>{heading}</h1>
     <Link to={`/${linkTo}`}>{linkToLabel}</Link>
+    { 
+      errorMessage 
+      && errorMessage
+        .split('\n')
+        .map(msg => (<p className='error'>{msg}</p>))
+    }
     <br />
     {
       Object.entries(formItems).map(([key, item]) => (

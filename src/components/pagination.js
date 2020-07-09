@@ -23,7 +23,6 @@ const generatePagination = (pageCount, handleClick,  currentPage = 1) => {
 function Pagination(props){
 
   const handleClick = (e) => {
-    console.log(e.target.innerText);
     e.target.disabled = true;
     props.dispatch(updateRequestedOffset(parseInt(e.target.innerText)-1));
   }

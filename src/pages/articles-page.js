@@ -7,17 +7,18 @@ import TagList from '../components/tag-list';
 import { getArticles } from '../actions/articles-action';
 
 function Articles(props) {
-  let {offset, requestedOffset, dispatch} = props
-  console.log("requestedOffset,  offset", requestedOffset, offset)
+
+  let {offset, requestedOffset, dispatch, isLoggedIn} = props;
   
-  useEffect(() => {
+  //NOTE: It should also reload if new post publishe\.
+  useEffect(() => {  
     dispatch(getArticles());
   }, [requestedOffset, dispatch])
 
   return (
     <>
       <nav>
-        <button>Personal Posts</button>
+        {isLoggedIn && <button>Personal Posts</button>}
         <button>Global Posts</button>
       </nav>
       <ArticleList articles={props.articles} />
@@ -38,6 +39,7 @@ const mapStateToProps = (state) => {
   let {articles:{offset, total, countPerPage, requestedOffset}} = state;
   let articles = state.articles[`${countPerPage}-${offset}`]
   return {
+    isLoggedIn: state.user.isAuthenticated,
     offset,
     total,
     countPerPage,

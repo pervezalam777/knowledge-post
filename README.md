@@ -49,3 +49,5 @@ The following are the approaches of this project.
 * add unit testing
 * add code coverage
 * CI/CD for deployment
+* Error handling framework can be added. This will provide intuitive msg and log the same error on log server for further analyses.
+* linter for : double quote vs single quote

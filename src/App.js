@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <header>
-       <HeaderNavigation isAuthenticated={true}/>
+       <HeaderNavigation/>
       </header>
       <main>
         <AppRouter />
