@@ -45,9 +45,12 @@ The following are the approaches of this project.
 
 
 ## TODO
-* add linting rules
-* add unit testing
-* add code coverage
+* Add unit testing (code is somewhat unit testable)
+* Add code coverage matrix ( traceability matrix)
 * CI/CD for deployment
 * Error handling framework can be added. This will provide intuitive msg and log the same error on log server for further analyses.
-* linter for : double quote vs single quote
+* Linter for : double quote vs single quote
+* After Authentication reload state
+* On token expire should redirect to login or update component with some message (use react portal).
+* Use react suspense component for loading state.
+* See if module lazy loading required.
