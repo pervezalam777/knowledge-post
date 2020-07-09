@@ -1,4 +1,4 @@
-import { signup, signin } from "../services/auth-service";
+import { signUp, signIn } from "../services/auth-service";
 
 export const SIGN_UP = 'sign_up';
 export const SING_IN = 'sign_in';
@@ -16,8 +16,8 @@ export const doAuthenticate = (credentials, authType = SING_IN) => {
     dispatch(authenticating())
     try {
       let response = authType == SIGN_UP 
-        ? await signup(credentials)
-        : await signin(credentials);
+        ? await signUp(credentials)
+        : await signIn(credentials);
      
       if(localStorage){
         localStorage.setItem('token', response.user.token);

@@ -6,20 +6,20 @@ import {
 } from "react-router-dom";
 import Articles from '../pages/articles-page';
 import ArticlePage from '../pages/article-page';
-import ArticleForm from '../components/article-form';
+import ArticleFormContainer from '../containers/article-form-container'
 
 
 function ArticleRoute() {
   let match = useRouteMatch();
 
   return <Switch>
-    <Route path={`${match.path}/:articleId/edit`}>
-      <ArticleForm />
+    <Route path={`${match.path}/:slug/edit`}>
+      <ArticleFormContainer />
     </Route>
     <Route path={`${match.path}/new`}>
-      <ArticleForm />
+      <ArticleFormContainer />
     </Route>
-    <Route path={`${match.path}/:articleId`}>
+    <Route path={`${match.path}/:slug`}>
       <ArticlePage />
     </Route> 
     <Route path={`${match.path}/tags/:tagsList`}>

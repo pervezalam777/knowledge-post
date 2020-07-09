@@ -30,7 +30,7 @@ state:{
   "username": "jake",
   "createdAt": "2020-07-09T06:31:38.579Z",
   "updatedAt": "2020-07-09T06:31:38.584Z",
-  "bio": "I work at statefarm",
+  "bio": "I work at state farm",
   "image": null,
   "serverError":"",
   "isAuthenticated":false

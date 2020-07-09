@@ -41,7 +41,7 @@ The following are the approaches of this project.
 * [Redux](https://redux.js.org/)
 * [React-route](https://reactrouter.com/web/guides/quick-start)
 * [React Bootstrap](https://react-bootstrap.github.io/)
-* [Realworld API](https://github.com/gothinkster/realworld/tree/master/api)
+* [Real-world API](https://github.com/gothinkster/realworld/tree/master/api)
 
 
 ## TODO
@@ -54,3 +54,6 @@ The following are the approaches of this project.
 * On token expire should redirect to login or update component with some message (use react portal).
 * Use react suspense component for loading state.
 * See if module lazy loading required.
+* Sign out functionality
+* End to end testing (could us protractor)
+* Try to use [normalizr](https://github.com/paularmstrong/normalizr)

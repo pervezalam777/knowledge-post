@@ -1,15 +1,6 @@
+import { convertErrorObjectToString } from "../utility/util";
 
 const serviceUrl = process.env.REACT_APP_SERVICE_URL;
-
-const convertErrorObjectToString = (error) => {
-  let message = Object
-    .entries(error)
-    .reduce((msg, val) => {
-      msg += `${val[0]} ${val[1].join('\n')}\n`
-      return msg;
-    }, '')
-  return {errorMessage:message.substring(0, message.length - 1)}
-}
 
 const authenticate = async (url, userDetails) => {
   try {
@@ -25,7 +16,8 @@ const authenticate = async (url, userDetails) => {
     );
     if(!response.ok){
       response = await response.json();
-      return Promise.reject(convertErrorObjectToString(response.errors));
+      let error = {errorMessage: convertErrorObjectToString(response.errors)}
+      return Promise.reject(error);
     }
     response = await response.json();
     return Promise.resolve(response);
@@ -35,10 +27,10 @@ const authenticate = async (url, userDetails) => {
   }
 }
 
-export const signup = (userDetails) => {
+export const signUp = (userDetails) => {
   return authenticate(`${serviceUrl}/users`, userDetails);
 }
 
-export const signin = (userDetails) => {
+export const signIn = (userDetails) => {
   return authenticate(`${serviceUrl}/users/login`, userDetails);
 }

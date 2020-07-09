@@ -6,7 +6,7 @@ import articleReducer from './article-reducer';
 const rootReducer = combineReducers({
   user:authReducer,
   articles:articlesReducer,
-  selectedArticle: articleReducer
+  singleArticle: articleReducer
 })
 
 export default rootReducer;
@@ -15,6 +15,6 @@ export default rootReducer;
 {
   user:{},
   articles: {},
-  selectedArticle: {}
+  article: {}
 }
 */
