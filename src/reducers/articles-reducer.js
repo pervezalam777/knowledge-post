@@ -1,5 +1,5 @@
 import { ARTICLES_RECEIVED, UPDATE_REQUESTED_OFFSET, UPDATE_OFFSET } from "../actions/articles-action";
-import { PUBLISHED } from "../actions/article-action";
+import { ARTICLE_PUBLISHED, ARTICLE_DELETED } from "../actions/article-action";
 
 const initialState = {
   offset:0,
@@ -32,7 +32,8 @@ const articlesReducer = (state = initialState, action) => {
         total:articlesCount,
         offset:requestedOffset
       }
-    case PUBLISHED:
+    case ARTICLE_PUBLISHED:
+    case ARTICLE_DELETED:
       return {...initialState }
     default:
       return state;

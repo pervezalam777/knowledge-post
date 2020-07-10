@@ -1,10 +1,18 @@
-import { PUBLISH_ERROR, PUBLISHED, PUBLISHING_ARTICLE, ARTICLE_NOT_FOUND, ARTICLE_RECEIVED, RESET_SUCCESS } from "../actions/article-action";
+import { 
+  PUBLISH_ERROR, 
+  ARTICLE_PUBLISHED, 
+  PUBLISHING_ARTICLE, 
+  ARTICLE_NOT_FOUND, 
+  ARTICLE_RECEIVED, 
+  RESET_SUCCESS, 
+  DELETE_ERROR, 
+  ARTICLE_DELETED
+} from "../actions/article-action";
 
 const initialSate = {
   success:false,
   loading:false,
   error:null,
-  fetchError:null
 }
 
 const articleReducer = (state = initialSate, action) => {
@@ -18,6 +26,7 @@ const articleReducer = (state = initialSate, action) => {
       }
     case PUBLISH_ERROR:
     case ARTICLE_NOT_FOUND:
+    case DELETE_ERROR:
       return {
         ...state,
         error: action.payload.errorMessage,
@@ -25,12 +34,17 @@ const articleReducer = (state = initialSate, action) => {
         success:false
       }
     case ARTICLE_RECEIVED:
-    case PUBLISHED:
+    case ARTICLE_PUBLISHED:
       return {
         ...state,
         ...action.payload.article,
         error:null,
         loading:false,
+        success:true
+      }
+    case ARTICLE_DELETED:
+      return {
+        ...initialSate,
         success:true
       }
     case RESET_SUCCESS: 

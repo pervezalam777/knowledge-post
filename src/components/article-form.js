@@ -5,7 +5,7 @@ const getErrorElement = (error) => {
   if(error.indexOf('\n')){
     return error
       .split('\n')
-      .map(msg => (<p className='error'>{msg}</p>))
+      .map((msg, i) => (<p className='error' key={i}>{msg}</p>))
   }
   return (<p className='error'>{error}</p>)
 }

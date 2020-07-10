@@ -1,23 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Article from '../components/article';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getArticle } from '../actions/article-action';
+import { useParams, useHistory } from 'react-router-dom';
+import { getArticle, deleteArticle, resetSuccess } from '../actions/article-action';
 
-function ArticlePage({dispatch, article}){
+const isOwner = ({author:{username}}, authUser) => (username && authUser && username === authUser)
+
+function ArticlePage({dispatch, article, loggedInUsername}){
   let { slug } = useParams();
-  console.log('article page..... ', slug)
+  let history = useHistory();
+  let [deleted, setDeleted] = useState(false);
   
   useEffect(() => {
     dispatch(getArticle(slug))
   }, [slug, dispatch])
 
+  useEffect(() => {
+    if(deleted && article.success){
+      history.replace('/');
+    }
+  }, [article.success, deleted, history])
+
+  const handleDelete = () => {
+    dispatch(resetSuccess());
+    setDeleted(true);
+    dispatch(deleteArticle(slug));
+  }
+
   if(!article.slug){
     return <p>Loading....</p>
   }
+
   return (
     <section>
-      <Article {...article} />
+      <Article 
+        {...article} 
+        handleDelete={handleDelete} 
+        owner={isOwner(article, loggedInUsername)} 
+      />
       <footer>
         <span>Comments component</span>
       </footer>
@@ -25,8 +45,11 @@ function ArticlePage({dispatch, article}){
   )
 }
 
+
+
 const mapStateToProps = (state) => {
   return {
+    loggedInUsername: state.user.username,
     article: {...state.singleArticle}
   }
 }

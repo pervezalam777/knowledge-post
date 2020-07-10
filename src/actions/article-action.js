@@ -1,20 +1,24 @@
-import { publishToServer, fetchArticleBySlug, updateToServer } from "../services/article-service"
+import { publishToServer, fetchArticleBySlug, updateToServer, deleteArticleOnServer } from "../services/article-service"
 
 
 export const PUBLISHING_ARTICLE = 'PUBLISHING_ARTICLE';
 export const PUBLISH_ERROR = 'PUBLISH_ERROR';
-export const PUBLISHED = 'PUBLISHED';
+export const ARTICLE_PUBLISHED = 'PUBLISHED';
 export const LOADING_ARTICLE = 'LOADING_ARTICLE';
 export const ARTICLE_RECEIVED = 'ARTICLE_RECEIVED';
 export const ARTICLE_NOT_FOUND = 'ARTICLE_NOT_FOUND';
 export const RESET_SUCCESS = 'RESET_SUCCESS';
+export const ARTICLE_DELETED = 'ARTICLE_DELETED';
+export const DELETE_ERROR = 'DELETE_ERROR';
 
 const publishingArticle = () => ({type:PUBLISHING_ARTICLE});
 const publishError = err => ({type:PUBLISH_ERROR, payload:err});
-const publishSuccess = data => ({type:PUBLISHED, payload:data});
+const publishSuccess = data => ({type:ARTICLE_PUBLISHED, payload:data});
 const loadingArticle = () => ({type:LOADING_ARTICLE})
 const articleLoaded = (data) => ({type:ARTICLE_RECEIVED, payload:data})
 const articleNotFound = (err) => ({type:ARTICLE_NOT_FOUND, payload:err})
+const articleDeleted = () => ({type:ARTICLE_DELETED})
+const deleteError = (err) => ({type:DELETE_ERROR, payload:err})
 
 export const resetSuccess = () => ({type:RESET_SUCCESS})
 
@@ -58,6 +62,18 @@ export const getArticle = (slug) => {
       dispatch(articleLoaded(res))
     } catch (error) {
       dispatch(articleNotFound(error))
+    }
+  }
+}
+
+export const deleteArticle = (slug) => {
+  return async (dispatch, getState) => {
+    try {
+      let token = getState().user.token;
+      await deleteArticleOnServer(slug, token);
+      dispatch(articleDeleted())
+    } catch (error) {
+      dispatch(deleteError(error))
     }
   }
 }

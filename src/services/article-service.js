@@ -20,7 +20,8 @@ const publish = async (detail) => {
       return Promise.resolve(response);
     }
 
-    if(parseInt(response.status) === 401){
+    let status = parseInt(response.status) 
+    if(status === 401 || status === 403){
       return Promise.reject({errorMessage:'You are not authorized'})
     }
     response = await response.json();
@@ -67,6 +68,33 @@ export const fetchArticleBySlug = async (slug) => {
     response = await response.json();
     return Promise.reject({errorMessage: response.error});
 
+  } catch (error) {
+    return Promise.reject({errorMessage:error.message})
+  }
+}
+
+
+export const deleteArticleOnServer = async (slug, token) => {
+  try {
+    let response = await fetch(
+      `${serviceUrl}/articles/${slug}`,
+      {
+        method:"DELETE",
+        headers: {
+          "Authorization":`Token ${token}`,
+        }
+      }
+    )
+    if(response.ok){
+      response = await response.json();
+      return Promise.resolve(response);
+    }
+    let status = parseInt(response.status) 
+    if(status === 401 || status === 403){
+      return Promise.reject({errorMessage:'You are not authorized'})
+    }
+    response = await response.json();
+    return Promise.reject({errorMessage: response.error});
   } catch (error) {
     return Promise.reject({errorMessage:error.message})
   }
