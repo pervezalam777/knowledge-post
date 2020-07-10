@@ -6,4 +6,3 @@ export const fetchArticles = async (limit = 10, offset = 0) =>{
   response = await response.json();
   return response;
 }
-

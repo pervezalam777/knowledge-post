@@ -20,7 +20,7 @@ NOTE: Use local Storage to store the Authentication token.
 * See comments under articles
 * Write your own comment under an article
 * Delete own comments
-* Edit own comments
+* Edit own comments **(API end point not available)**
 
 ### Bonus Functionality:-
 * Adding these gets you extra points
@@ -32,9 +32,8 @@ NOTE: Use local Storage to store the Authentication token.
 The following are the approaches of this project.
 
 * [Thinking in react](https://reactjs.org/docs/thinking-in-react.html)
-* Make it work, Make it right, Make it fast
-* Clean Code
-* SRP and DRY principles
+* Make it work, Make it right (Never ship first thing that works)
+* Clean Code: SRP, DRY
 
 ## References
 * [React](https://reactjs.org/)
@@ -57,3 +56,4 @@ The following are the approaches of this project.
 * Sign out functionality
 * End to end testing (could us protractor)
 * Try to use [normalizr](https://github.com/paularmstrong/normalizr)
+* Naming convention (naming variable is alway hard problem, so check if names are not descriptive or has some ambiguity)

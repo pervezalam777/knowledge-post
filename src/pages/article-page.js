@@ -3,6 +3,7 @@ import Article from '../components/article';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getArticle, deleteArticle, resetSuccess } from '../actions/article-action';
+import CommentList from '../containers/comment-list';
 
 const isOwner = ({author:{username}}, authUser) => (username && authUser && username === authUser)
 
@@ -39,7 +40,7 @@ function ArticlePage({dispatch, article, loggedInUsername}){
         owner={isOwner(article, loggedInUsername)} 
       />
       <footer>
-        <span>Comments component</span>
+        <CommentList />
       </footer>
     </section>
   )
