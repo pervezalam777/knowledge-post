@@ -7,8 +7,7 @@ import {
 import ArticleRoute from './article-router';
 import LoginPage from '../pages/login-page';
 import SignUpPage from '../pages/signup-page';
-
-
+import UserSettingsPage from '../pages/user-settings-page';
 
 function AppRouter(){
   return (
@@ -18,6 +17,9 @@ function AppRouter(){
       </Route>
       <Route path="/register">
         <SignUpPage />
+      </Route>
+      <Route path="/settings">
+        <UserSettingsPage /> 
       </Route>
       <Route path="/articles">
         <ArticleRoute />

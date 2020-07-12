@@ -1,36 +1,39 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ReactMarkdown from "react-markdown"
 
 import User from './user';
+import { dateFormat } from '../utility/util';
 
 const getErrorElement = (error) => {
   console.log('error', error)
   if(error.indexOf('\n')){
     return error
       .split('\n')
-      .map((msg, i) => (<p className='error' key={i}>{msg}</p>))
+      .map((msg, i) => (<p className='text-danger' key={i}>{msg}</p>))
   }
-  return (<p className='error'>{error}</p>)
+  return (<p className='text-danger'>{error}</p>)
 }
 
-const articleMeta = ({id, createdAt, author, owner}, handleDelete) => {
+const articleMeta = ({createdAt, author, owner}, handleEdit, handleDelete) => {
   return (
-    <div>
+    <div style={{margin:"0rem 1rem"}}>
       <User {...author}>
-        {new Date(createdAt).toLocaleString()}
+        { dateFormat(createdAt)}
       </User>
       {
-        owner &&  <ul>
-          <NavLink to={`/articles/${id}/edit`}>Edit Article</NavLink>
-          <button onClick={handleDelete}>delete Article</button>
-        </ul>
+        owner &&  <div>
+          <button className="btn btn-outline-primary mr-2" onClick={handleEdit}>Edit Article</button>
+          <button className="btn btn-outline-danger" onClick={handleEdit}>delete Article</button>
+        </div>
       }
     </div>
   )
 }
 
 function Article(props) {
+  const history = useHistory();
+  
   let {
     title,
     slug,
@@ -41,18 +44,27 @@ function Article(props) {
     owner,
     error
   } = props;
-  let meta = articleMeta({slug, createdAt, author, owner}, handleDelete)
+
+  const handleEdit = () => {
+    history.push(`/articles/${slug}/edit`)
+  }
+
+  let meta = articleMeta({createdAt, author, owner}, handleEdit, handleDelete)
+ 
   return (
     <>
-      <header>
-        <h1>{title}</h1>
+      <header className="d-block p-2 bg-dark text-white" >
+        <h1 style={{margin:"2rem 1rem"}}>{title}</h1>
         {meta}
         {props.error && getErrorElement(error)}
       </header>
-      <main>
+      <main style={{margin:"2rem 2rem"}}>
         <ReactMarkdown source={body}/>
       </main>
-      {meta}
+      <hr />
+      <div className="d-flex justify-content-center">
+        {meta}
+      </div>
     </>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
-import './card.css'
+import style from './card.module.css'
 
 export function Card(props){
-  return <div className="card">
+  return <div className={style.card}>
     {props.children}
   </div>
 }

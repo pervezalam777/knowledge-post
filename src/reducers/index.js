@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   user:authReducer,
   articles:articlesReducer,
   singleArticle: articleReducer,
-  articleComments: commentReducer 
+  articleComments: commentReducer,
 })
 
 export default rootReducer;

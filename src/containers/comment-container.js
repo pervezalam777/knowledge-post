@@ -7,12 +7,9 @@ import { postComment, deleteComment } from '../actions/comment-action';
 function CommentContainer(props) {
   const { slug } = useParams();
   const [comment, setComment] = useState(props.body || '');
-  const [edit, setEdit] = useState(props.edit || false);
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODO: code for update comment
-    //once api is available
     props.dispatch(postComment(slug, {body:comment}));
   }
 
@@ -20,15 +17,11 @@ function CommentContainer(props) {
     setComment(e.target.value);
   }
 
-  const handleEdit = () => {
-    setEdit(true);
-  }
-
   const handleDelete = () => {
     props.dispatch(deleteComment(slug, props.id));
   }
 
-  if(edit){
+  if(props.edit){
     return <CommentForm 
       comment={comment}
       handleChange={handleChange}
@@ -37,7 +30,7 @@ function CommentContainer(props) {
   }
   return <Comment 
     comment={comment}
-    handleEdit={handleEdit}
+    author={props.author}
     handleDelete={handleDelete}
   />
 }

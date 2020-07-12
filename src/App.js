@@ -11,15 +11,12 @@ import HeaderNavigation from './components/header-navigation';
 function App() {
   return (
     <Router>
-      <header>
+      <header className="navbar navbar-expand navbar-light bg-light">
        <HeaderNavigation/>
       </header>
       <main>
         <AppRouter />
       </main>
-      <footer>
-        <span>footer section...</span>
-      </footer>
     </Router>
   );
 }

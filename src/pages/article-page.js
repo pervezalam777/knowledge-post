@@ -39,8 +39,10 @@ function ArticlePage({dispatch, article, loggedInUsername}){
         handleDelete={handleDelete} 
         owner={isOwner(article, loggedInUsername)} 
       />
-      <footer>
-        <CommentList />
+      <footer className="flex-row">
+        <div className="flex-column">
+          <CommentList />
+        </div>
       </footer>
     </section>
   )

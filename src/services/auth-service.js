@@ -34,3 +34,25 @@ export const signUp = (userDetails) => {
 export const signIn = (userDetails) => {
   return authenticate(`${serviceUrl}/users/login`, userDetails);
 }
+
+export const validateUserOnServer = async (token) => {
+  try {
+    let response = await fetch(
+      `${serviceUrl}/user`,
+      {
+        method:"GET",
+        headers: {
+          "Authorization": `Token ${token}`,
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      }
+    );
+    if(response.ok){
+      response = await response.json();
+      return Promise.resolve(response);
+    }
+    return Promise.reject({errorMessage:"Not logged in"});
+  } catch(error){
+    return Promise.reject({errorMessage:"Not logged in"});
+  }
+}

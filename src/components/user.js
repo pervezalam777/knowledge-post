@@ -4,14 +4,17 @@ import React from 'react';
 // placeholder image.
 function User(props){
   return (
-    <div>
+    <div className="d-flex flex-row bd-highlight align-items-center mb-3">
       <img 
+        className="mr-1"
         src={props.image? props.image : `${process.env.PUBLIC_URL}/placeholder.jpg`} 
         alt={props.username}
-        style={{borderRadius:'100%', width:'2.5rem'}} 
+        style={{borderRadius:'100%', width:'2rem', height:'2rem'}} 
       />
-      <h4>{props.username}</h4>
-      {props.children}
+      <div className="">
+        <h6 className="mb-0 h6">{props.username}</h6>
+        {props.children}
+      </div>
     </div>
   )
 }

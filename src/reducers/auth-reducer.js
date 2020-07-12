@@ -1,4 +1,4 @@
-import { AUTHENTICATION_ERROR, AUTHENTICATION_SUCCESS } from "../actions/auth-actions";
+import { AUTHENTICATION_ERROR, AUTHENTICATION_SUCCESS, LOGOUT } from "../actions/auth-actions";
 
 const initialState = {
   serverError:null,
@@ -14,6 +14,10 @@ const authReducer = (state = initialState, action) => {
         ...initialState,
         ...action.payload,
         isAuthenticated: true
+      }
+    case LOGOUT:
+      return {
+        ...initialState
       }
     default:
       return state;
