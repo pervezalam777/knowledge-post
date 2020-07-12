@@ -10,7 +10,8 @@ function AuthFormContainer({
   errorMessage, 
   isAuthenticated, 
   formItems, 
-  formStaticData
+  formStaticData,
+  type
 }){
   const [state, setState] = useState(formItems);
 
@@ -28,7 +29,7 @@ function AuthFormContainer({
         return data;
       }, {});
 
-    dispatch(doAuthenticate(credential));
+    dispatch(doAuthenticate(credential, type));
   }
 
   const handleChange = (e) => {

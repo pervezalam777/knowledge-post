@@ -1,5 +1,6 @@
 import React, {  } from 'react';
 import AuthFormContainer from '../containers/auth-form-container';
+import { SIGN_UP } from '../actions/auth-actions';
 
 const staticData = {
   heading:"Sign up",
@@ -34,7 +35,8 @@ const elements = {
 function SignUpPage(){
   return <AuthFormContainer 
     formStaticData={staticData} 
-    formItems={elements} 
+    formItems={elements}
+    type={SIGN_UP}
   />
 }
 

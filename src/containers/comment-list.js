@@ -4,6 +4,10 @@ import CommentContainer from './comment-container';
 import { useParams } from 'react-router-dom';
 import { loadComments } from '../actions/comment-action';
 
+const isUserOwner = (author, user) => {
+  return author.username === user.username;
+}
+
 function CommentList({dispatch, articleComments:{comments}, user}) {
   const { slug } = useParams();
 
@@ -11,7 +15,7 @@ function CommentList({dispatch, articleComments:{comments}, user}) {
     if(slug){
       dispatch(loadComments(slug))
     }
-  }, [slug])
+  }, [slug, dispatch])
 
   return (
     <>
@@ -26,6 +30,7 @@ function CommentList({dispatch, articleComments:{comments}, user}) {
             key={comment.id} 
             {...comment}
             dispatch={dispatch}
+            owner={isUserOwner(comment.author, user)}
           />
         ))
       }

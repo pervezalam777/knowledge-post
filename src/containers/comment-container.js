@@ -32,6 +32,7 @@ function CommentContainer(props) {
     comment={comment}
     author={props.author}
     handleDelete={handleDelete}
+    owner={props.owner}
   />
 }
 

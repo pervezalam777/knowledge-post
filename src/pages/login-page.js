@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthFormContainer from '../containers/auth-form-container';
+import { SIGN_IN } from '../actions/auth-actions';
 
 //TODO: Client side validation as well
 //NOTE: There is lot of duplication in Sign In and Sign Up
@@ -30,7 +31,8 @@ const elements = {
 function LoginPage(){
   return <AuthFormContainer 
     formStaticData={staticData} 
-    formItems={elements} 
+    formItems={elements}
+    type={SIGN_IN}
   />
 }
 

@@ -1,7 +1,7 @@
 import { signUp, signIn, validateUserOnServer } from "../services/auth-service";
 
 export const SIGN_UP = 'sign_up';
-export const SING_IN = 'sign_in';
+export const SIGN_IN = 'sign_in';
 
 export const AUTHENTICATING = 'AUTHENTICATING';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
@@ -27,7 +27,7 @@ export const autoLogin = () => {
   }
 }
 
-export const doAuthenticate = (credentials, authType = SING_IN) => {
+export const doAuthenticate = (credentials, authType = SIGN_IN) => {
   return async (dispatch) => {
     dispatch(authenticating())
     try {
