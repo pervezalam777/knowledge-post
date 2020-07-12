@@ -30,13 +30,3 @@ export const deleteCommentToServer = (slug, token, id) => {
   }
   return processServiceRequest(details);
 }
-
-export const updateCommentToServer = (slug, token, id, body) => {
-  let details = {
-    url: `${serviceUrl}/articles/${slug}/comments/${id}`,
-    method:"PUT",
-    token,
-    body: JSON.stringify({comment:body})
-  }
-  return processServiceRequest(details);
-}

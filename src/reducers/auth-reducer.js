@@ -1,4 +1,8 @@
-import { AUTHENTICATION_ERROR, AUTHENTICATION_SUCCESS, LOGOUT } from "../actions/auth-actions";
+import { 
+  AUTHENTICATION_ERROR, 
+  AUTHENTICATION_SUCCESS, 
+  LOGOUT 
+} from "../actions/auth-actions";
 
 const initialState = {
   serverError:null,
