@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const getErrorElement = (error) => {
   console.log('error', error)
   if (error.indexOf('\n')) {
@@ -23,7 +24,7 @@ function ArticleForm({
 }) {
   console.log("dirty", dirty)
   return (
-    <form onSubmit={handleSubmit} className="card" style={{ minWidth: '20rem', maxWidth: '45rem' }}>
+    <form onSubmit={handleSubmit} className="card article-form">
       <div className="card-body">
         {
           dirty && error
@@ -33,7 +34,7 @@ function ArticleForm({
           dirty && loading && <p className="text-primary">publishing.....</p>
         }
         <div className="form-group">
-          <label htmlFor="title" style={{ display: 'none' }} >Article Title</label>
+          <label htmlFor="title" className="hidden" >Article Title</label>
           <input
             id="title"
             name="title"
@@ -45,7 +46,7 @@ function ArticleForm({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="description" style={{ display: 'none' }}>Article description</label>
+          <label htmlFor="description" className="hidden">Article description</label>
           <input
             id="description"
             name="description"
@@ -57,7 +58,7 @@ function ArticleForm({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="body" style={{ display: 'none' }}>Article body</label>
+          <label htmlFor="body" className="hidden">Article body</label>
           <textarea
             id="body"
             name="body"
@@ -68,7 +69,7 @@ function ArticleForm({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="tagList" style={{ display: 'none' }}>Article description</label>
+          <label htmlFor="tagList" className="hidden">Article description</label>
           <input
             id="tagList"
             name="tagList"

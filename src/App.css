@@ -1,0 +1,128 @@
+* { margin: 0; padding: 0; outline: 0; border: 0; }
+
+.container-fluid { padding: 0; }
+.card-footer { padding: 10px; }
+
+
+
+.article-container {
+    margin: 0rem 1rem;
+}
+
+.article-title {
+    margin: 2rem 1rem;
+}
+
+.article-area {
+    margin: 2rem 2rem;
+}
+
+.article-form {
+    min-width: 20rem;
+    max-width: 45rem;
+    margin: 20px auto;
+}
+
+.hidden { display: none; }
+
+.auth-form {
+    min-width: 20rem;
+    max-width: 30rem;
+    margin: auto;
+}
+
+.comment-section, .comment-form {
+   margin: 2rem auto;
+   min-width: 20rem;
+   max-width: 40rem;
+}
+
+.comments-area {
+    width: 100%;
+    border: none;
+}
+
+
+.sub-heading {
+    margin: 0rem 1rem;
+}
+
+.header-row {
+    width: 100%;
+    margin: auto;
+}
+
+/**User Profile*/
+.user-profile { margin: 15px 0;}
+.user-profile .user-image, 
+.user-profile .user-details {
+    display: inline-block;
+    vertical-align: middle;
+}
+.user-profile .user-image {
+    width: 33px;
+    border-radius: 30px;
+    margin-right: 12px;
+    height: 33px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+.user-profile img { width: 100%; }
+
+.user-profile .user-details { line-height: 16px; color:#bbb; }
+.user-profile .user-details .user-name { color: #5cb85c; font-size: 1rem; }
+
+/**User Black Profile*/
+.user-black-profile { padding: 25px; }
+.user-black-profile .user-details .user-name { color: #fff; }
+
+.article-actions-btn { margin: 20px 0; }
+
+.btn { font-size: 14px; padding: 3px 10px; }
+
+/** Comment section user image */
+.user-comment-image { margin: 0; }
+.user-comment-image .user-image {
+    width: 20px;
+    border-radius: 30px;
+    margin-right: 8px;
+    height: 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+.user-comment-image img { vertical-align: top; }
+.user-comment-image .user-name { font-size: 12px !important; }
+
+/**User Logout Section*/
+.user-logout-section {
+    text-align: center;
+    padding: 10px 30px;
+}
+.user-logout-section .user-image {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.user-logout-section .user-image img { width: 100%; }
+.user-logout-section .user-name { font-size: 1.5rem; }
+.button-container { text-align: right; margin: 5px 20px 0 20px; }
+
+.article-title {
+    margin: 0;
+}
+.article-description {
+    margin-bottom: 5px;
+}
+
+.read-more {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+
+
+
+
+

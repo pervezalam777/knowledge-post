@@ -12,16 +12,16 @@ function ArticleItem({
   title
 }) {
   return <Card>
-    <section >
+    <div className="user-profile">
       <User image={author.image} username={author.username}>
-        <small className="text-muted" >{dateFormat(createdAt)}</small>
+        <small>{dateFormat(createdAt)}</small>
       </User>
-    </section>
-    <section>
-      <h2>{title}</h2>
-      <p className="text-secondary">{description}</p>
-      <Link to={`/articles/${slug}`}>Read more..</Link>
-    </section>
+    </div>
+    <div>
+      <h5 className="article-title">{title}</h5>
+      <p className="text-secondary article-description">{description}</p>
+      <Link className="read-more" to={`/articles/${slug}`}>Read more..</Link>
+    </div>
   </Card>
 }
 

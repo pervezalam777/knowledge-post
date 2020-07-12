@@ -6,7 +6,7 @@ import { autoLogin } from '../actions/auth-actions';
 const navigationForAuthenticatedUser = (username) => {
   return (
     <ul className="navbar-nav">
-      <li className="nav-item">
+      <li className="nav-item ml-auto">
         <NavLink className="nav-link" to="/articles">Home</NavLink>
       </li>
       <li className="nav-item">
@@ -22,7 +22,7 @@ const navigationForAuthenticatedUser = (username) => {
 const navigationForUnauthenticatedUser = () => {
   return (
     <ul className="navbar-nav">
-      <li className="nav-item">
+      <li className="nav-item ml-auto">
         <NavLink exact className="nav-link" to="/articles">Home</NavLink>
       </li>
       <li className="nav-item">
@@ -43,14 +43,18 @@ function HeaderNavigation(props) {
   }, [dispatch])
 
   return (
-    <>
+    <div className="row header-row">
+      <div className="col">
       <NavLink className="navbar-brand" to="/">Knowledge Posts</NavLink>
+      </div>
+      <div className="col">
       {
         props.isAuthenticated
           ? navigationForAuthenticatedUser(props.username)
           : navigationForUnauthenticatedUser()
       }
-    </>
+      </div>
+    </div>
   )
 }
 

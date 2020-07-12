@@ -10,6 +10,7 @@ import HeaderNavigation from './components/header-navigation';
 
 function App() {
   return (
+    <div className="container-fluid">
     <Router>
       <header className="navbar navbar-expand navbar-light bg-light">
        <HeaderNavigation/>
@@ -18,6 +19,7 @@ function App() {
         <AppRouter />
       </main>
     </Router>
+    </div>
   );
 }
 

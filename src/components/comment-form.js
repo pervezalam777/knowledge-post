@@ -2,14 +2,13 @@ import React from 'react';
 
 function CommentForm(props) {
   return (
-    <section className="d-block card" style={{ margin: "2rem 1rem", minWidth: '20rem', maxWidth: '40rem' }} >
+    <section className="d-block card comment-form" >
       <form onSubmit={props.handleSubmit}>
 
 
-          <label htmlFor="comments" style={{ display: 'none' }}>Write a comment</label>
+          <label htmlFor="comments" className="hidden">Write a comment</label>
           <textarea 
-            className="card-body form-control"
-            style={{width:"100%", border:'none', marginBottom:"-6px"}}
+            className="card-body form-control comments-area"
             id="comments"
             placeholder="Write a comment"
             value={props.comment}

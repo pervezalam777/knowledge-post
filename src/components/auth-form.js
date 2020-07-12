@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 function AuthForm({
   heading,
   linkTo,
-  linkToLabel,
+  linkToLabel, 
   formItems,
   handleChange,
   handleSubmit,
   errorMessage
 }) {
-  return <form onSubmit={handleSubmit} className="d-flex justify-content-center card" style={{minWidth:'20rem', maxWidth:'30rem'}}>
+  return <form onSubmit={handleSubmit} className="d-flex justify-content-center card auth-form">
     <div className="card-body">
       <h1 className="d-flex justify-content-center card-title">{heading}</h1>
       <Link className="card-subtitle mb-2 d-flex justify-content-center" to={`/${linkTo}`}>{linkToLabel}</Link>
@@ -25,7 +25,7 @@ function AuthForm({
       {
         Object.entries(formItems).map(([key, item]) => (
           <div className="form-group" key={item.id}>
-            <label htmlFor={item.id} style={{display:'none'}}>{item.label}</label>
+            <label htmlFor={item.id} className='hidden'>{item.label}</label>
             <input
               type={item.type}
               id={item.id}

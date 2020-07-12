@@ -17,14 +17,14 @@ const getErrorElement = (error) => {
 
 const articleMeta = ({createdAt, author, owner}, handleEdit, handleDelete) => {
   return (
-    <div style={{margin:"0rem 1rem"}}>
+    <div className='article-container user-profile'>
       <User {...author}>
-        { dateFormat(createdAt)}
+        <small>{ dateFormat(createdAt)}</small>
       </User>
       {
-        owner &&  <div>
+        owner &&  <div className="article-actions-btn">
           <button className="btn btn-outline-primary mr-2" onClick={handleEdit}>Edit Article</button>
-          <button className="btn btn-outline-danger" onClick={handleEdit}>delete Article</button>
+          <button className="btn btn-outline-danger" onClick={handleEdit}>Delete Article</button>
         </div>
       }
     </div>
@@ -53,12 +53,12 @@ function Article(props) {
  
   return (
     <>
-      <header className="d-block p-2 bg-dark text-white" >
-        <h1 style={{margin:"2rem 1rem"}}>{title}</h1>
+      <header className="d-block bg-dark text-white user-profile user-black-profile" >
+        <h1 className='article-title'>{title}</h1>
         {meta}
         {props.error && getErrorElement(error)}
       </header>
-      <main style={{margin:"2rem 2rem"}}>
+      <main className="article-area">
         <ReactMarkdown source={body}/>
       </main>
       <hr />

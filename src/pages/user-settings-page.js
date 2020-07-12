@@ -14,9 +14,11 @@ function UserSettings({user, dispatch}) {
 
   return (
     <header className="d-block p-2 bg-dark text-white" >
-      <div style={{ margin: "0rem 1rem" }}>
+      <div className="sub-heading user-logout-section">
         <User {...user}></User>
-        <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>
+        <div className="button-container">
+        <button className="btn btn-outline-light" onClick={handleLogout}>Logout</button>
+        </div>
       </div>
     </header>
   )
