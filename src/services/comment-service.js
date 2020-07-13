@@ -1,32 +1,31 @@
-import { processServiceRequest } from "./base-service";
-
-//NOTE: There should a base service for common code.
-
-const serviceUrl = process.env.REACT_APP_SERVICE_URL;
+import { 
+  processPublicRequest, 
+  processProtectedRequest 
+} from "./base-service";
 
 export const fetchComments = (slug) => {
   let details = {
-    url: `${serviceUrl}/articles/${slug}/comments`,
+    url: `/articles/${slug}/comments`,
     method:"GET",
   }
-  return processServiceRequest(details);
+  return processPublicRequest(details);
 }
 
 export const postCommentToServer = (slug, token, data) => {
   let details = {
-    url: `${serviceUrl}/articles/${slug}/comments`,
+    url: `/articles/${slug}/comments`,
     method:"POST",
     token,
     body: JSON.stringify({comment:data})
   }
-  return processServiceRequest(details);
+  return processProtectedRequest(details);
 } 
 
 export const deleteCommentToServer = (slug, token, id) => {
   let details = {
-    url: `${serviceUrl}/articles/${slug}/comments/${id}`,
+    url: `/articles/${slug}/comments/${id}`,
     method:"DELETE",
     token,
   }
-  return processServiceRequest(details);
+  return processProtectedRequest(details);
 }

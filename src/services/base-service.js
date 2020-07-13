@@ -1,8 +1,6 @@
-
 import { convertErrorObjectToString } from "../utility/util";
 
-//TODO: service url should be kept here
-//const serviceUrl = process.env.REACT_APP_SERVICE_URL;
+const serviceUrl = process.env.REACT_APP_SERVICE_URL;
 
 const getRequestOption = (detail) => {
   let req = {
@@ -11,21 +9,18 @@ const getRequestOption = (detail) => {
       "Content-Type": "application/json; charset=utf-8"
     }
   };
-  if(detail.token){
-    req.headers["Authorization"] = `Token ${detail.token}`
-  }
-  
+
   if(detail.body){
     req.body = detail.body
   }
   return req;
-} 
+}
 
-export const processServiceRequest = async (detail) => {
+const processRequest = async (endPoint, options) => {
   try {
     let response = await fetch(
-      detail.url,
-      getRequestOption(detail)
+      `${serviceUrl}${endPoint}`,
+      options
     );
 
     if(response.ok) {
@@ -45,3 +40,18 @@ export const processServiceRequest = async (detail) => {
     return Promise.reject({errorMessage:error.message})
   }
 }
+
+export const processProtectedRequest = (detail) => {
+  let options = getRequestOption(detail);
+  options.headers["Authorization"] = `Token ${detail.token}`;
+
+  return processRequest(detail.url, options); 
+}
+
+export const processPublicRequest = (detail) => {
+  let options =  getRequestOption(detail)
+
+  return processRequest(detail.url, options);
+}
+
+

@@ -1,4 +1,9 @@
-import { publishToServer, fetchArticleBySlug, updateToServer, deleteArticleOnServer } from "../services/article-service"
+import { 
+  publishToServer, 
+  fetchArticleBySlug, 
+  updateToServer, 
+  deleteArticleOnServer 
+} from "../services/article-service"
 
 
 export const PUBLISHING_ARTICLE = 'PUBLISHING_ARTICLE';
