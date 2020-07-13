@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AuthForm from '../components/auth-form';
-import { doAuthenticate } from '../actions/auth-actions';
+import { doAuthenticate, authErrorReset } from '../actions/auth-actions';
 
 function AuthFormContainer({
   dispatch, 
@@ -14,6 +14,10 @@ function AuthFormContainer({
   type
 }){
   const [state, setState] = useState(formItems);
+
+  useEffect(() => {
+    dispatch(authErrorReset())
+  }, [type, dispatch]);
 
   if(isAuthenticated){
     return (<Redirect to='/' />)

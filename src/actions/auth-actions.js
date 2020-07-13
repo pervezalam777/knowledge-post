@@ -7,6 +7,7 @@ export const AUTHENTICATING = 'AUTHENTICATING';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const AUTHENTICATION_SUCCESS = 'AUTHENTICATION_SUCCESS';
 export const LOGOUT = 'LOGOUT';
+export const AUTH_ERROR_RESET = 'AUTH_ERROR_RESET';
 
 const authenticating = () => ({type:AUTHENTICATING});
 const authError = (error) => ({type:AUTHENTICATION_ERROR, payload:error});
@@ -48,4 +49,8 @@ export const doAuthenticate = (credentials, authType = SIGN_IN) => {
 export const logout = () => {
   localStorage.removeItem('token');
   return {type:LOGOUT}
+}
+
+export const authErrorReset = () => {
+  return {type:AUTH_ERROR_RESET}
 }

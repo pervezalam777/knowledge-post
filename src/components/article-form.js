@@ -1,15 +1,5 @@
 import React from 'react';
-
-
-const getErrorElement = (error) => {
-  console.log('error', error)
-  if (error.indexOf('\n')) {
-    return error
-      .split('\n')
-      .map((msg, i) => (<p className='text-danger' key={i}>{msg}</p>))
-  }
-  return (<p className='text-danger'>{error}</p>)
-}
+import { getErrorElement } from './component-util';
 
 function ArticleForm({
   title,
@@ -22,7 +12,6 @@ function ArticleForm({
   handleChange,
   handleSubmit
 }) {
-  console.log('dirty', dirty)
   return (
     <form onSubmit={handleSubmit} className='card article-form'>
       <div className='card-body'>

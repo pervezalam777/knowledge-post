@@ -1,7 +1,8 @@
 import { 
   AUTHENTICATION_ERROR, 
   AUTHENTICATION_SUCCESS, 
-  LOGOUT 
+  LOGOUT, 
+  AUTH_ERROR_RESET
 } from '../actions/auth-actions';
 
 const initialState = {
@@ -22,6 +23,11 @@ const authReducer = (state = initialState, action) => {
     case LOGOUT:
       return {
         ...initialState
+      }
+    case AUTH_ERROR_RESET:
+      return {
+        ...state,
+        serverError:null
       }
     default:
       return state;

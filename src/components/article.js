@@ -4,16 +4,7 @@ import ReactMarkdown from 'react-markdown'
 
 import User from './user';
 import { dateFormat } from '../utility/util';
-
-const getErrorElement = (error) => {
-  console.log('error', error)
-  if(error.indexOf('\n')){
-    return error
-      .split('\n')
-      .map((msg, i) => (<p className='text-danger' key={i}>{msg}</p>))
-  }
-  return (<p className='text-danger'>{error}</p>)
-}
+import { getErrorElement } from './component-util';
 
 const getArticleMeta = ({createdAt, author, owner}, handleEdit, handleDelete) => {
   return (

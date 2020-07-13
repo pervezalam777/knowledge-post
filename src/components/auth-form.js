@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { getErrorElement } from './component-util';
 
 function AuthForm({
   heading,
@@ -16,9 +17,7 @@ function AuthForm({
       <Link className='card-subtitle mb-2 d-flex justify-content-center' to={`/${linkTo}`}>{linkToLabel}</Link>
       {
         errorMessage
-        && errorMessage
-          .split('\n')
-          .map(msg => (<p className='text-danger'>{msg}</p>))
+        && getErrorElement(errorMessage)
       }
       {
         Object.entries(formItems).map(([key, item]) => (
