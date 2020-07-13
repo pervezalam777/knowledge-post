@@ -40,7 +40,31 @@ The following are the approaches of this project.
 * [Redux](https://redux.js.org/)
 * [React-route](https://reactrouter.com/web/guides/quick-start)
 * [Real-world API](https://github.com/gothinkster/realworld/tree/master/api)
-* [@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)
+* [@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit) 
+
+
+## Steps to deploy with Firebase
+You should have firebase account (gmail account) <br/><br/>
+
+Following are the steps
+1) Generate production ready build via **npm run build** command.
+2) Login to [firebase](https://console.firebase.google.com/) hosting site
+3) Create a project (I have create knowledgepost-e9776)
+4) **npm install -g firebase-tools** Install firebase node package globally on your local machine
+5) **firebase login** run this command in terminal/console of your local machine
+
+6)  **firebase init** run this command on your application folder and follow the instruction
+7) Select **Hosting: Configure and Deploy firebase hosting site** 
+8) Select project name you have created on step three
+9) Give the name of public directory as **build** that is where your production ready code is available.
+10) Type 'y' (yes) if it ask you to build it as single page application
+11) Type 'n' (no) if it ask you to override existing index.html file
+12) Run **firebase deploy** command once all the set up is done.
+<br/><br/>
+
+**You do not need to do step 6 to 11 if you are going to use this application code. you need to change project name in '.firebaserc' file**
+
+
 
 
 ## Deployed on
