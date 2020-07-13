@@ -1,4 +1,4 @@
-import { convertErrorObjectToString } from "../utility/util";
+import { convertErrorObjectToString } from '../utility/util';
 
 const serviceUrl = process.env.REACT_APP_SERVICE_URL;
 
@@ -6,7 +6,7 @@ const getRequestOption = (detail) => {
   let req = {
     method:detail.method,
     headers: {
-      "Content-Type": "application/json; charset=utf-8"
+      'Content-Type': 'application/json; charset=utf-8'
     }
   };
 
@@ -43,7 +43,7 @@ const processRequest = async (endPoint, options) => {
 
 export const processProtectedRequest = (detail) => {
   let options = getRequestOption(detail);
-  options.headers["Authorization"] = `Token ${detail.token}`;
+  options.headers['Authorization'] = `Token ${detail.token}`;
 
   return processRequest(detail.url, options); 
 }

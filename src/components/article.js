@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown from 'react-markdown'
 
 import User from './user';
 import { dateFormat } from '../utility/util';
@@ -22,9 +22,9 @@ const getArticleMeta = ({createdAt, author, owner}, handleEdit, handleDelete) =>
         <small>{ dateFormat(createdAt)}</small>
       </User>
       {
-        owner &&  <div className="article-actions-btn">
-          <button className="btn btn-outline-primary mr-2" onClick={handleEdit}>Edit Article</button>
-          <button className="btn btn-outline-danger" onClick={handleDelete}>Delete Article</button>
+        owner &&  <div className='article-actions-btn'>
+          <button className='btn btn-outline-primary mr-2' onClick={handleEdit}>Edit Article</button>
+          <button className='btn btn-outline-danger' onClick={handleDelete}>Delete Article</button>
         </div>
       }
     </div>
@@ -53,16 +53,16 @@ function Article(props) {
  
   return (
     <>
-      <header className="d-block bg-dark text-white user-profile user-black-profile" >
+      <header className='d-block bg-dark text-white user-profile user-black-profile' >
         <h1 className='article-title'>{title}</h1>
         {articleMeta}
         {props.error && getErrorElement(error)}
       </header>
-      <main className="article-area">
+      <main className='article-area'>
         <ReactMarkdown source={body}/>
       </main>
       <hr />
-      <div className="d-flex justify-content-center">
+      <div className='d-flex justify-content-center'>
         {articleMeta}
       </div>
     </>

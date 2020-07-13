@@ -2,7 +2,7 @@ import {
   AUTHENTICATION_ERROR, 
   AUTHENTICATION_SUCCESS, 
   LOGOUT 
-} from "../actions/auth-actions";
+} from '../actions/auth-actions';
 
 const initialState = {
   serverError:null,
@@ -29,18 +29,3 @@ const authReducer = (state = initialState, action) => {
 }
 
 export default authReducer;
-
-
-/* 
-state:{
-  "email": "jake@jake.jake",
-  "token": "jwt.token.here",
-  "username": "jake",
-  "createdAt": "2020-07-09T06:31:38.579Z",
-  "updatedAt": "2020-07-09T06:31:38.584Z",
-  "bio": "I work at state farm",
-  "image": null,
-  "serverError":"",
-  "isAuthenticated":false
-}
-*/

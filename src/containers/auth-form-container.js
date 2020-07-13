@@ -16,7 +16,7 @@ function AuthFormContainer({
   const [state, setState] = useState(formItems);
 
   if(isAuthenticated){
-    return (<Redirect to="/" />)
+    return (<Redirect to='/' />)
   }
 
   const handleSubmit = (e) => {

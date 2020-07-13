@@ -2,9 +2,9 @@ import {
   fetchComments, 
   postCommentToServer, 
   deleteCommentToServer 
-} from "../services/comment-service";
+} from '../services/comment-service';
 
-export const COMMENTS_LOADING = "COMMENTS_LOADING";
+export const COMMENTS_LOADING = 'COMMENTS_LOADING';
 export const COMMENTS_LOAD_ERROR = 'COMMENTS_LOAD_ERROR';
 export const COMMENTS_RECEIVED = 'COMMENTS_RECEIVED';
 export const COMMENTS_RESET = 'COMMENTS_RESET';

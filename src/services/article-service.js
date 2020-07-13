@@ -1,9 +1,9 @@
-import { processProtectedRequest, processPublicRequest } from "./base-service";
+import { processProtectedRequest, processPublicRequest } from './base-service';
 
 export const publishToServer = (data, token) => {
   let details = {
     url: `/articles`,
-    method:"POST",
+    method:'POST',
     body:JSON.stringify({article:data}),
     token
   }
@@ -13,7 +13,7 @@ export const publishToServer = (data, token) => {
 export const updateToServer = (data, token, slug) => {
   let details = {
     url: `/articles/${slug}`,
-    method:"PUT",
+    method:'PUT',
     body:JSON.stringify({article:data}),
     token
   }
@@ -23,7 +23,7 @@ export const updateToServer = (data, token, slug) => {
 export const fetchArticleBySlug = async (slug) => {
   let details = {
     url: `/articles/${slug}`,
-    method:"GET"
+    method:'GET'
   }
   return processPublicRequest(details);
 }
@@ -31,7 +31,7 @@ export const fetchArticleBySlug = async (slug) => {
 export const deleteArticleOnServer = async (slug, token) => {
   let details = {
     url: `/articles/${slug}`,
-    method:"DELETE",
+    method:'DELETE',
     token
   }
   return processProtectedRequest(details);

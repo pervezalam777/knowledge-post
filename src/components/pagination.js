@@ -9,9 +9,9 @@ const generatePagination = (pageCount, handleClick, currentPage = 1) => {
   const pagesButton = []
   for (let i = 1; i <= pageCount; i++) {
     pagesButton.push(
-      <div className={i === currentPage ? "page-item active" : "page-item"}  key={i}>
+      <div className={i === currentPage ? 'page-item active' : 'page-item'}  key={i}>
         <button
-          className="page-link"
+          className='page-link'
           disabled={i === currentPage}
           onClick={handleClick}
         >{i}</button>
@@ -29,7 +29,7 @@ function Pagination(props) {
   }
 
   return (
-    <nav className="ml-3 mr-3 pagination d-flex flex-wrap">
+    <nav className='ml-3 mr-3 pagination d-flex flex-wrap'>
       {generatePagination(
         getTotalPageCount(props.totalPosts, props.countPerPage),
         handleClick,

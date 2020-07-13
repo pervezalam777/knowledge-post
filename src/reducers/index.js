@@ -12,11 +12,3 @@ const rootReducer = combineReducers({
 })
 
 export default rootReducer;
-
-/* 
-{
-  user:{},
-  articles: {},
-  article: {}
-}
-*/

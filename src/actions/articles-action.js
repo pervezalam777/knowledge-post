@@ -1,6 +1,5 @@
-import { fetchArticles } from "../services/articles-service";
+import { fetchArticles } from '../services/articles-service';
 
-//TODO: for performance gain, should use symbol instead of string value.
 export const LOADING_ARTICLES = 'loading_articles';
 export const ARTICLES_RECEIVED = 'articles_received';
 export const UPDATE_REQUESTED_OFFSET = 'update_requested_offset';
@@ -18,7 +17,6 @@ export function getArticles(){
   return async (dispatch, getState) => {
     dispatch(loadingArticles());
     let state = getState();
-    //console.log("state.. ",state);
     let {articles:{requestedOffset, countPerPage}} = state;
     let key = `${countPerPage}-${requestedOffset}`;
     if(state.articles[key]){

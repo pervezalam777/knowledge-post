@@ -3,7 +3,7 @@ import {
   fetchArticleBySlug, 
   updateToServer, 
   deleteArticleOnServer 
-} from "../services/article-service"
+} from '../services/article-service';
 
 
 export const PUBLISHING_ARTICLE = 'PUBLISHING_ARTICLE';

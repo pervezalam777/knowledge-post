@@ -5,15 +5,15 @@ import { autoLogin } from '../actions/auth-actions';
 
 const navigationForAuthenticatedUser = (username) => {
   return (
-    <ul className="navbar-nav">
-      <li className="nav-item ml-auto">
-        <NavLink className="nav-link" to="/articles">Home</NavLink>
+    <ul className='navbar-nav'>
+      <li className='nav-item ml-auto'>
+        <NavLink className='nav-link' to='/articles'>Home</NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/articles/new">New Article</NavLink>
+      <li className='nav-item'>
+        <NavLink className='nav-link' to='/articles/new'>New Article</NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/settings">{username}</NavLink>
+      <li className='nav-item'>
+        <NavLink className='nav-link' to='/settings'>{username}</NavLink>
       </li>
     </ul>
   )
@@ -21,15 +21,15 @@ const navigationForAuthenticatedUser = (username) => {
 
 const navigationForUnauthenticatedUser = () => {
   return (
-    <ul className="navbar-nav">
-      <li className="nav-item ml-auto">
-        <NavLink exact className="nav-link" to="/articles">Home</NavLink>
+    <ul className='navbar-nav'>
+      <li className='nav-item ml-auto'>
+        <NavLink exact className='nav-link' to='/articles'>Home</NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/login">Sign in</NavLink>
+      <li className='nav-item'>
+        <NavLink className='nav-link' to='/login'>Sign in</NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/register">Sign up</NavLink>
+      <li className='nav-item'>
+        <NavLink className='nav-link' to='/register'>Sign up</NavLink>
       </li>
     </ul>
   )
@@ -43,11 +43,11 @@ function HeaderNavigation(props) {
   }, [dispatch])
 
   return (
-    <div className="row header-row">
-      <div className="col">
-      <NavLink className="navbar-brand" to="/">Knowledge Posts</NavLink>
+    <div className='row header-row'>
+      <div className='col'>
+      <NavLink className='navbar-brand' to='/'>Knowledge Posts</NavLink>
       </div>
-      <div className="col">
+      <div className='col'>
       {
         props.isAuthenticated
           ? navigationForAuthenticatedUser(props.username)

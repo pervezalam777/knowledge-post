@@ -13,11 +13,11 @@ function UserSettings({user, dispatch}) {
   }
 
   return (
-    <header className="d-block p-2 bg-dark text-white" >
-      <div className="sub-heading user-logout-section">
+    <header className='d-block p-2 bg-dark text-white' >
+      <div className='sub-heading user-logout-section'>
         <User {...user}></User>
-        <div className="button-container">
-        <button className="btn btn-outline-light" onClick={handleLogout}>Logout</button>
+        <div className='button-container'>
+        <button className='btn btn-outline-light' onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </header>

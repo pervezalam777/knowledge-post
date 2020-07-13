@@ -1,12 +1,12 @@
 import { 
   processPublicRequest, 
   processProtectedRequest 
-} from "./base-service";
+} from './base-service';
 
 export const fetchComments = (slug) => {
   let details = {
     url: `/articles/${slug}/comments`,
-    method:"GET",
+    method:'GET',
   }
   return processPublicRequest(details);
 }
@@ -14,7 +14,7 @@ export const fetchComments = (slug) => {
 export const postCommentToServer = (slug, token, data) => {
   let details = {
     url: `/articles/${slug}/comments`,
-    method:"POST",
+    method:'POST',
     token,
     body: JSON.stringify({comment:data})
   }
@@ -24,7 +24,7 @@ export const postCommentToServer = (slug, token, data) => {
 export const deleteCommentToServer = (slug, token, id) => {
   let details = {
     url: `/articles/${slug}/comments/${id}`,
-    method:"DELETE",
+    method:'DELETE',
     token,
   }
   return processProtectedRequest(details);

@@ -14,7 +14,6 @@ const initialState = {
 
 const getInitialState = (slug, article) => {
   if(slug && article.body){
-    console.log('working.......', slug, article)
     const {
       tagList,
       title,
@@ -56,7 +55,7 @@ function ArticleFormContainer({dispatch, article}) {
     delete stateClone.dirty;
     dispatch(publishArticle(stateClone, slug));
   }
-  console.log('State:::::', state)
+  
   return (
     <ArticleForm 
       {...state}

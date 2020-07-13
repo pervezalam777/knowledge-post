@@ -4,7 +4,7 @@ import {
   COMMENTS_RESET,
   COMMENT_POST_SUCCESS,
   DELETE_POST_SUCCESS
-} from "../actions/comment-action";
+} from '../actions/comment-action';
 
 const initialState = {
   loading: false,

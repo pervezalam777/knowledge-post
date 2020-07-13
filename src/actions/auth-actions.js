@@ -1,4 +1,4 @@
-import { signUp, signIn, validateUserOnServer } from "../services/auth-service";
+import { signUp, signIn, validateUserOnServer } from '../services/auth-service';
 
 export const SIGN_UP = 'sign_up';
 export const SIGN_IN = 'sign_in';

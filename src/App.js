@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -10,9 +10,9 @@ import HeaderNavigation from './components/header-navigation';
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className='container-fluid'>
     <Router>
-      <header className="navbar navbar-expand navbar-light bg-light">
+      <header className='navbar navbar-expand navbar-light bg-light'>
        <HeaderNavigation/>
       </header>
       <main>
