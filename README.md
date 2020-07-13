@@ -22,7 +22,7 @@ NOTE: Use local Storage to store the Authentication token.
 * Delete own comments
 * Edit own comments **(API end point not available)**
 
-### Bonus Functionality:-
+### Extra Functionality (Pending):-
 Adding these gets you extra points
 * Support for tags, and seeing articles of only particular tag
 * Setting articles as favourites and browsing own favourite articles
@@ -42,6 +42,11 @@ The following are the approaches of this project.
 * [Real-world API](https://github.com/gothinkster/realworld/tree/master/api)
 * [@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)
 
+
+## Deployed on
+[Knowledge Post](https://knowledgepost-e9776.web.app)
+
+
 ## TODO
 * Add unit testing (code is somewhat unit testable)
 * Add code coverage matrix ( traceability matrix)
@@ -55,3 +60,4 @@ The following are the approaches of this project.
 * Use symbol primitive type in place of string constant
 * Client side form validations
 * Loading/processing indications for service request
+
