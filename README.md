@@ -54,3 +54,4 @@ The following are the approaches of this project.
 * Naming convention *(Naming variable is alway hard problem, so check if names are not descriptive or has some ambiguity)*
 * Use symbol primitive type in place of string constant
 * Client side form validations
+* Loading/processing indications for service request
