@@ -20,6 +20,7 @@ export function getArticles(){
     let {articles:{requestedOffset, countPerPage}} = state;
     let key = `${countPerPage}-${requestedOffset}`;
     if(state.articles[key]){
+      await Promise.resolve()
       dispatch(updateOffsetOnly(requestedOffset))
       return;
     }

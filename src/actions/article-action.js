@@ -15,6 +15,7 @@ export const ARTICLE_NOT_FOUND = 'ARTICLE_NOT_FOUND';
 export const RESET_SUCCESS = 'RESET_SUCCESS';
 export const ARTICLE_DELETED = 'ARTICLE_DELETED';
 export const DELETE_ERROR = 'DELETE_ERROR';
+export const DELETING_IN_PROGRESS = 'DELETING_IN_PROGRESS';
 
 const publishingArticle = () => ({type:PUBLISHING_ARTICLE});
 const publishError = err => ({type:PUBLISH_ERROR, payload:err});
@@ -24,6 +25,7 @@ const articleLoaded = (data) => ({type:ARTICLE_RECEIVED, payload:data})
 const articleNotFound = (err) => ({type:ARTICLE_NOT_FOUND, payload:err})
 const articleDeleted = () => ({type:ARTICLE_DELETED})
 const deleteError = (err) => ({type:DELETE_ERROR, payload:err})
+const deletingInProgress = () => ({type:DELETING_IN_PROGRESS})
 
 export const resetSuccess = () => ({type:RESET_SUCCESS})
 
@@ -60,7 +62,9 @@ export const getArticle = (slug) => {
     dispatch(loadingArticle())
     let post = findInLocalState(slug, getState())
     if(post.length > 0){
+      await Promise.resolve();
       dispatch(articleLoaded({article: post[0]}))
+      return;
     }
     try {
       let res = await fetchArticleBySlug(slug)
@@ -73,6 +77,7 @@ export const getArticle = (slug) => {
 
 export const deleteArticle = (slug) => {
   return async (dispatch, getState) => {
+    dispatch(deletingInProgress())
     try {
       let token = getState().user.token;
       await deleteArticleOnServer(slug, token);

@@ -9,17 +9,23 @@ export const COMMENTS_LOAD_ERROR = 'COMMENTS_LOAD_ERROR';
 export const COMMENTS_RECEIVED = 'COMMENTS_RECEIVED';
 export const COMMENTS_RESET = 'COMMENTS_RESET';
 
+export const POSTING_NEW_COMMENT = 'POSTING_NEW_COMMENT';
+
 export const COMMENT_POST_ERROR = 'COMMENT_POST_ERROR';
 export const COMMENT_POST_SUCCESS = 'COMMENT_POST_SUCCESS';
 export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+export const DELETING_COMMENT = 'DELETING_COMMENT';
 
 const loading = () => ({type:COMMENTS_LOADING});
 const loadError = (error) => ({type:COMMENTS_LOAD_ERROR, payload:error});
 const commentsLoaded = (data) => ({type:COMMENTS_RECEIVED, payload:data});
 
+const postingNewComment = () => ({type:POSTING_NEW_COMMENT})
+
 const postError = (error) => ({type:COMMENT_POST_ERROR, payload:error})
 const postSuccess = (data) => ({type:COMMENT_POST_SUCCESS, payload:data})
 const deleteSuccess = (id) => ({type:DELETE_POST_SUCCESS, payload:id})
+const deletingComment = () => ({type:DELETING_COMMENT})
 
 export const commentsReset = () => ({type:COMMENTS_RESET})
 
@@ -38,6 +44,7 @@ export const loadComments = (slug) => {
 
 export const postComment = (slug, data) => {
   return async (dispatch, getState) => {
+    dispatch(postingNewComment())
     try{
       let token = getState().user.token;
       let response = await postCommentToServer(slug, token, data);
@@ -50,6 +57,7 @@ export const postComment = (slug, data) => {
 
 export const deleteComment = (slug, id) => {
   return async (dispatch, getState) => {
+    dispatch(deletingComment())
     try{
       let token = getState().user.token;
       await deleteCommentToServer(slug, token, id);
